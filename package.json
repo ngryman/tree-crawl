@@ -7,7 +7,8 @@
   "repository": "ngryman/tree-crawl",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "lib/"
   ],
   "scripts": {
     "lint": "eslint {,lib/,test/}*.js",
