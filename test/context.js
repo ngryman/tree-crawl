@@ -95,6 +95,32 @@ test('remove current node in a pre-order walk', t => {
   t.deepEqual(values, [1, 2, 3])
 })
 
+test('remove also skip current node children in a pre-order walk', t => {
+  const tree = {
+    value: 1,
+    children: [
+      {
+        value: 2,
+        children: [
+          { value: 3 }
+        ]
+      }
+    ]
+  }
+
+  const values = []
+
+  crawl(tree, (node, context) => {
+    values.push(node.value)
+    if (2 === node.value) {
+      tree.children.splice(0, 1)
+      context.remove()
+    }
+  })
+
+  t.deepEqual(values, [1, 2])
+})
+
 test('break a post-order walk', t => {
   const values = []
 
