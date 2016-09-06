@@ -65,6 +65,10 @@ crawl(tree, (node, context) => {
 
 See the [api](docs/api.md) documentation.
 
+## Related
+
+ - [tree-morph](https://github.com/ngryman/tree-morph) Morph mutable or immutable trees. Uses this module.
+
 ## License
 
 MIT © [Nicolas Gryman](http://ngryman.sh)
