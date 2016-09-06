@@ -1,6 +1,6 @@
 # tree-crawl
 
-> Generic tree traversal library.
+> Agnostic tree traversal library.
 
 [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
 

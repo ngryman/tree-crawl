@@ -1,7 +1,7 @@
 {
   "name": "tree-crawl",
   "version": "0.2.0",
-  "description": "Generic tree traversal library.",
+  "description": "Agnostic tree traversal library.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
   "repository": "ngryman/tree-crawl",
@@ -28,6 +28,7 @@
   "keywords": [
     "tree",
     "generic",
+    "agnostic",
     "traverse",
     "traversal",
     "walk",
