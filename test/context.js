@@ -15,6 +15,16 @@ test('provide current node path', t => {
   })
 })
 
+test('provide current node parent', t => {
+  t.plan(1)
+
+  crawl(tree, (node, context) => {
+    if (6 === node.value) {
+      t.is(context.parent, tree.children[1])
+    }
+  })
+})
+
 test('provide current node depth', t => {
   t.plan(6)
 

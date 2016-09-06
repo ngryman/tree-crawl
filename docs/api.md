@@ -51,6 +51,7 @@ He also can use it to hold his own persistant data between each invocation.
 * [Context](#Context)
     * [new Context()](#new_Context_new)
     * [.path](#Context+path) ⇒ <code>Array</code>
+    * [.parent](#Context+parent) ⇒ <code>Object</code>
     * [.depth](#Context+depth) ⇒ <code>number</code>
     * [.level](#Context+level) ⇒ <code>number</code>
     * [.walk()](#Context+walk)
@@ -71,6 +72,13 @@ traverse from the root included to the current node.
 
 **Kind**: instance property of <code>[Context](#Context)</code>  
 **Returns**: <code>Array</code> - Array of nodes.  
+<a name="Context+parent"></a>
+
+### context.parent ⇒ <code>Object</code>
+Get the parent of the current node.
+
+**Kind**: instance property of <code>[Context](#Context)</code>  
+**Returns**: <code>Object</code> - Parent of the current node.  
 <a name="Context+depth"></a>
 
 ### context.depth ⇒ <code>number</code>
