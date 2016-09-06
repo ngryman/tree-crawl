@@ -28,6 +28,7 @@
   "keywords": [
     "tree",
     "generic",
+    "agnostic",
     "traverse",
     "traversal",
     "walk",
