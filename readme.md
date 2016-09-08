@@ -1,6 +1,6 @@
 # tree-crawl
 
-> Generic tree traversal library.
+> Agnostic tree traversal library.
 
 [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
 
@@ -10,9 +10,9 @@
 [codecov-url]: https://codecov.io/github/ngryman/tree-crawl
 
 
-**tree-crawl** is a lightweight tree crawler, well, technically walker. But the name was already taken you know...
+**tree-crawl** is a lightweight tree crawler, well, technically walker.
 
-It lets your easily walk any tree in **pre-order** or **post-order**. It supports in-place mutation of the tree including structural ones and does not 💥 when you move nodes around.
+It lets your easily walk any tree in **pre-order** or **post-order** and supports tree mutations, it does not 💥 when you move nodes around.
 
 ## Install
 
@@ -67,7 +67,8 @@ See the [api](docs/api.md) documentation.
 
 ## Related
 
- - [tree-morph](https://github.com/ngryman/tree-morph) Morph mutable or immutable trees. Uses this module.
+ - [tree-mutate](https://github.com/ngryman/tree-mutate) Agnostic tree mutation library.
+ - [tree-morph](https://github.com/ngryman/tree-morph) Agnostic tree morphing library.
 
 ## License
 
