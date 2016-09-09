@@ -67,7 +67,8 @@ See the [api](docs/api.md) documentation.
 
 ## Related
 
- - [tree-morph](https://github.com/ngryman/tree-morph) Morph mutable or immutable trees. Uses this module.
+ - [tree-mutate](https://github.com/ngryman/tree-mutate) Agnostic tree mutation library. Uses this module.
+ - [tree-morph](https://github.com/ngryman/tree-morph) Agnostic tree morphing library. Uses this module.
 
 ## License
 

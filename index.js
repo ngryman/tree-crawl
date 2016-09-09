@@ -15,31 +15,32 @@ const Context = require('./lib/context')
 function eachChild(node, iteratee, options, context, walker) {
   const children = node[options.childrenKey]
 
-  // Early return if no children.
+  // early return if no children
   if (null == children || 0 === children.length) return
 
-  // Add parent node to the context path.
+  // add parent node to the context path
   context.path.push(node)
 
   for (let i = 0; i < children.length; i++) {
     const child = children[i]
     walker(child, iteratee, options, context)
 
-    // Break if context flags do not allow to continue.
+    // break if context flags do not allow to continue
     if (!context.has('siblings')) break
 
-    // A node was removed, decrement the index so we don't miss the next node.
+    // a node was removed, decrement the index so we don't miss the next node
     if (context.has('remove')) {
       i--
       context.unset('remove')
     }
   }
 
-  // Set back `siblings` flag, if not breaking
+  // set back `siblings` flag, if not breaking
   if (!context.is('break')) {
     context.set('siblings')
   }
-  // Remove parent node from the context path.
+
+  // remove parent node from the context path
   context.path.pop()
 }
 
@@ -55,11 +56,11 @@ function eachChild(node, iteratee, options, context, walker) {
 function walkPreorder(node, iteratee, options, context) {
   iteratee(node, context)
 
-  // Iterate over children if context flags allow it.
+  // iterate over children if context flags allow it
   if (context.has('children')) {
     eachChild(node, iteratee, options, context, walkPreorder)
   }
-  // Set back `children`, if not breaking.
+  // set back `children`, if not breaking
   else if (!context.is('break')) {
     context.set('children')
   }
@@ -75,17 +76,16 @@ function walkPreorder(node, iteratee, options, context) {
  * @param {Context} context Context of the iteration.
  */
 function walkPostorder(node, iteratee, options, context) {
-  // Special case here, we ignore `skip` as it does not make sense in a
-  // post-order walk to ignore children.
+  // special case here, we ignore `skip` as it does not make sense in a
+  // post-order walk to ignore children
   if (context.is('siblings')) {
     context.walk()
   }
 
-  // Iterate over children.
+  // iterate over children
   eachChild(node, iteratee, options, context, walkPostorder)
 
-  // Set back `walk`, and visit the node if not breaking.
-  // We are ignoring `skip` here too.
+  // if not breaking, set back `children`
   if (!context.is('break')) {
     context.set('children')
     iteratee(node, context)
@@ -118,16 +118,16 @@ function walkPostorder(node, iteratee, options, context) {
 function crawl(root, iteratee, options) {
   if (null == root) return
 
-  // Merge options with defaults.
+  // merge options with defaults
   options = Object.assign({
     childrenKey: 'children',
     order: 'pre'
   }, options)
 
-  // Create a context for this walk.
+  // create a context for this walk
   const context = new Context()
 
-  // Walk in `pre`/`post` order.
+  // walk in `pre`/`post` order
   if ('pre' === options.order) {
     walkPreorder(root, iteratee, options, context)
   }
