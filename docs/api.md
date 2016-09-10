@@ -8,7 +8,7 @@ the <code>iteratee</code> function is invoked.</p>
 by setting/unsetting flags to it. Those flags will alter the walking process
 by bypassing some parts of the tree or adjusting the algorithm in reaction of
 some tree mutations (i.e removing a node).</p>
-<p>He also can use it to hold his own persistant data between each invocation.</p>
+<p>He also can use it to hold his own persistent data between each invocation.</p>
 </dd>
 </dl>
 
@@ -44,7 +44,7 @@ by setting/unsetting flags to it. Those flags will alter the walking process
 by bypassing some parts of the tree or adjusting the algorithm in reaction of
 some tree mutations (i.e removing a node).
 
-He also can use it to hold his own persistant data between each invocation.
+He also can use it to hold his own persistent data between each invocation.
 
 **Kind**: global class  
 
@@ -59,6 +59,7 @@ He also can use it to hold his own persistant data between each invocation.
     * [.break()](#Context+break)
     * [.skip()](#Context+skip)
     * [.remove()](#Context+remove)
+    * [.replace(node)](#Context+replace)
 
 <a name="new_Context_new"></a>
 
@@ -128,6 +129,18 @@ Remove current node, any children won't be visited and walk will visit
 the next siblings correctly.
 
 **Kind**: instance method of <code>[Context](#Context)</code>  
+<a name="Context+replace"></a>
+
+### context.replace(node)
+Replace current node with given one, walk will only visit the new node
+children.
+
+**Kind**: instance method of <code>[Context](#Context)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| node | <code>Object</code> | Replacement node. |
+
 <a name="crawl"></a>
 
 ## crawl(root, iteratee, [options])
