@@ -10,6 +10,7 @@ const FLAGS = {
   siblings: 0x0001,
   children: 0x0010,
   remove: 0x0100,
+  replace: 0x1000,
   walk: 0x0011,
   break: 0x0000
 }
@@ -23,7 +24,7 @@ const FLAGS = {
  * by bypassing some parts of the tree or adjusting the algorithm in reaction of
  * some tree mutations (i.e removing a node).
  *
- * He also can use it to hold his own persistant data between each invocation.
+ * He also can use it to hold his own persistent data between each invocation.
  */
 class Context {
   /**
@@ -62,6 +63,17 @@ class Context {
    */
   remove() {
     this._flags = FLAGS.siblings | FLAGS.remove
+  }
+
+  /**
+   * Replace current node with given one, walk will only visit the new node
+   * children.
+   *
+   * @param {Object} node Replacement node.
+   */
+  replace(node) {
+    this._replace = node
+    this._flags = FLAGS.walk | FLAGS.replace
   }
 
   /**
@@ -209,6 +221,12 @@ function eachChild(node, iteratee, options, context, walker) {
  */
 function walkPreorder(node, iteratee, options, context) {
   iteratee(node, context)
+
+  // replace node if context flags say it
+  if (context.has('replace')) {
+    node = context._replace
+    context.unset('replace')
+  }
 
   // iterate over children if context flags allow it
   if (context.has('children')) {
