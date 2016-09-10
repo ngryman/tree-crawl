@@ -30,6 +30,7 @@
   "precommit": [
     "test",
     "check-coverage",
+    "build",
     "docs"
   ],
   "keywords": [
