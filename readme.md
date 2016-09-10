@@ -40,13 +40,11 @@ crawl(tree, (node, context) => {
   if ('foo' === node.type) {
     context.skip()
   }
-  console.log(node)
 })
 
 // break the walk
 crawl(tree, (node, context) => {
   if ('foo' === node.type) {
-    console.log(node)
     context.break()
   }
 })
@@ -54,9 +52,22 @@ crawl(tree, (node, context) => {
 // remove a node
 crawl(tree, (node, context) => {
   if ('foo' === node.type) {
-    const parentChildren = node.parent.children
-    parentChildren.splice(parentChildren.indexOf(node))
+    context.parent.children.splice(context.index, 1)
     context.remove()
+  }
+})
+
+// replace a node
+crawl(tree, (node, context) => {
+  if ('foo' === node.type) {
+    const node = {
+      type: 'new node',
+      children: [
+        { type: 'new leaf' }
+      ]
+    }
+    context.parent.children[context.index] = node
+    context.replace(node)
   }
 })
 ```
