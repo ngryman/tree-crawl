@@ -1,24 +1,29 @@
 import test from 'ava'
+import clone from 'clone'
 import crawl from '../'
 import tree from './helpers/tree'
 
+test.beforeEach(t => {
+  t.context.tree = clone(tree)
+})
+
 test('traverse a tree', t => {
   const values = []
-  crawl(tree, node => values.push(node.value))
+  crawl(t.context.tree, node => values.push(node.value))
 
   t.deepEqual(values, [1, 2, 3, 4, 5, 6])
 })
 
 test('traverse a tree in pre-order', t => {
   const values = []
-  crawl(tree, node => values.push(node.value), { order: 'pre' })
+  crawl(t.context.tree, node => values.push(node.value), { order: 'pre' })
 
   t.deepEqual(values, [1, 2, 3, 4, 5, 6])
 })
 
 test('traverse a tree in post-order', t => {
   const values = []
-  crawl(tree, node => values.push(node.value), { order: 'post' })
+  crawl(t.context.tree, node => values.push(node.value), { order: 'post' })
 
   t.deepEqual(values, [3, 4, 2, 6, 5, 1])
 })
