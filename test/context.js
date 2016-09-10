@@ -1,6 +1,6 @@
 import test from 'ava'
 import clone from 'clone'
-import crawl from '../'
+import crawl from '../index'
 import tree from './helpers/tree'
 
 test.beforeEach(t => {
@@ -117,6 +117,24 @@ test('remove current node in a pre-order walk', t => {
   })
 
   t.deepEqual(values, [1, 2, 5, 6])
+})
+
+test('replace current node in a pre-order walk', t => {
+  const values = []
+  const newNode = {
+    value: 2,
+    children: [
+      { value: 1337 }
+    ]
+  }
+  crawl(t.context.tree, (node, context) => {
+    values.push(node.value)
+    if (2 === node.value) {
+      context.replace(newNode)
+    }
+  })
+
+  t.deepEqual(values, [1, 2, 1337, 5, 6])
 })
 
 test('break a post-order walk', t => {

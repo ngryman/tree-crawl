@@ -55,6 +55,12 @@ function eachChild(node, iteratee, options, context, walker) {
 function walkPreorder(node, iteratee, options, context) {
   iteratee(node, context)
 
+  // replace node if context flags say it
+  if (context.has('replace')) {
+    node = context._replace
+    context.unset('replace')
+  }
+
   // iterate over children if context flags allow it
   if (context.has('children')) {
     eachChild(node, iteratee, options, context, walkPreorder)
