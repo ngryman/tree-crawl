@@ -23,6 +23,7 @@ function eachChild(node, iteratee, options, context, walker) {
 
   for (let i = 0; i < children.length; i++) {
     const child = children[i]
+    context._index = i
     walker(child, iteratee, options, context)
 
     // break if context flags do not allow to continue
