@@ -173,3 +173,21 @@ test('remove current node in a post-order walk', t => {
 
   t.deepEqual(values, [3, 4, 2, 6, 5, 1])
 })
+
+test('replace current node in a post-order walk', t => {
+  const values = []
+  const newNode = {
+    value: 2,
+    children: [
+      { value: 1337 }
+    ]
+  }
+  crawl(t.context.tree, (node, context) => {
+    values.push(node.value)
+    if (2 === node.value) {
+      context.replace(newNode)
+    }
+  }, { order: 'post' })
+
+  t.deepEqual(values, [3, 4, 2, 6, 5, 1])
+})
