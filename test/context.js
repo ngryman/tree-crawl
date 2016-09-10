@@ -25,6 +25,35 @@ test('provide current node parent', t => {
   })
 })
 
+test('provide current node index', t => {
+  const indices = []
+  crawl(tree, (node, context) => indices.push(context.index))
+
+  t.deepEqual(indices, [-1, 0, 0, 1, 1, 0])
+})
+
+test('provide up-to-date index when a node is removed', t => {
+  const tree = {
+    value: 1,
+    children: [
+      { value: 2 },
+      { value: 3 }
+    ]
+  }
+
+  const indices = []
+
+  crawl(tree, (node, context) => {
+    indices.push(context.index)
+    if (2 === node.value) {
+      tree.children.splice(0, 1)
+      context.remove()
+    }
+  })
+
+  t.deepEqual(indices, [-1, 0, 0])
+})
+
 test('provide current node depth', t => {
   t.plan(6)
 
