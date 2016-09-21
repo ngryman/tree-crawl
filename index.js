@@ -84,8 +84,11 @@ function walkPostorder(node, iteratee, options, context) {
   // special case here, we ignore `skip` as it does not make sense in a
   // post-order walk to ignore children
   if (context.is('siblings')) {
-    context.walk()
+    context.set('siblings')
   }
+
+  // save current index
+  const index = context.index
 
   // iterate over children
   eachChild(node, iteratee, options, context, walkPostorder)
@@ -93,6 +96,7 @@ function walkPostorder(node, iteratee, options, context) {
   // if not breaking, set back `children`
   if (!context.is('break')) {
     context.set('children')
+    context._index = index
     iteratee(node, context)
   }
 }
