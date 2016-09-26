@@ -193,12 +193,29 @@ test('remove current node (post-order)', t => {
   crawl(t.context.tree, (node, context) => {
     values.push(node.value)
     if (2 === node.value) {
-      t.context.tree.children.splice(0, 1)
+      t.context.tree.children.splice(context.index, 1)
       context.remove()
     }
   }, { order: 'post' })
 
   t.deepEqual(values, [3, 4, 2, 6, 5, 1])
+})
+
+test('remove current node after hoisting (post-order)', t => {
+  const values = []
+  crawl(t.context.tree, (node, context) => {
+    values.push(node.value)
+    if (2 === node.value) {
+      for (let i = node.children.length - 1; i >= 0; i--) {
+        const child = node.children[i]
+        t.context.tree.children.splice(context.index + 1, 0, child)
+      }
+      t.context.tree.children.splice(context.index, 1)
+      context.remove()
+    }
+  }, { order: 'post' })
+
+  t.deepEqual(values, [3, 4, 2, 3, 4, 6, 5, 1])
 })
 
 test('replace current node', t => {
