@@ -1,7 +1,7 @@
 {
   "name": "tree-crawl",
   "version": "0.4.1",
-  "description": "Agnostic tree traversal library.",
+  "description": "n-ary tree traversal library.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
   "repository": "ngryman/tree-crawl",
@@ -35,6 +35,10 @@
   ],
   "keywords": [
     "tree",
+    "n-ary tree",
+    "k-ary tree",
+    "multiway tree",
+    "rose tree",
     "generic",
     "agnostic",
     "traverse",
@@ -43,7 +47,7 @@
     "visit",
     "visitor",
     "recursive",
-    "depth first",
+    "breadth first",
     "preorder",
     "postorder"
   ],

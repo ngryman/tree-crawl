@@ -1,6 +1,6 @@
 # tree-crawl
 
-> Agnostic tree traversal library.
+> n-ary tree traversal library.
 
 [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
 
@@ -12,7 +12,7 @@
 
 **tree-crawl** is a lightweight tree crawler, well, technically walker.
 
-It lets your easily walk any tree in **pre-order** or **post-order** and supports tree mutations, it does not 💥 when you move nodes around.
+It lets your walk `n-ary` trees in **pre-order** or **post-order** and does not 💥 when you mutate the tree while traversing it.
 
 ## Install
 
@@ -78,8 +78,8 @@ See the [api](docs/api.md) documentation.
 
 ## Related
 
- - [tree-mutate](https://github.com/ngryman/tree-mutate) Agnostic tree mutation library.
- - [tree-morph](https://github.com/ngryman/tree-morph) Agnostic tree morphing library.
+ - [tree-mutate](https://github.com/ngryman/tree-mutate) n-ary tree mutation library.
+ - [tree-morph](https://github.com/ngryman/tree-morph) n-ary tree morphing library.
 
 ## License
 
