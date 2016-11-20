@@ -5,15 +5,17 @@
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
   "repository": "ngryman/tree-crawl",
-  "main": "index.cjs",
+  "main": "dist/tree-crawl.node.js",
+  "browser": "dist/tree-crawl.browser.js",
+  "module": "index.js",
   "jsnext:main": "index.js",
   "engines": {
     "node": ">=4"
   },
   "files": [
     "index.js",
-    "index.cjs",
-    "lib/"
+    "lib/",
+    "dist/"
   ],
   "scripts": {
     "lint": "meta lint",
@@ -37,6 +39,7 @@
     "tree",
     "n-ary tree",
     "k-ary tree",
+    "n-way tree",
     "multiway tree",
     "rose tree",
     "generic",
@@ -54,18 +57,12 @@
   "dependencies": {},
   "devDependencies": {
     "clone": "^1.0.2",
-    "meta-dev": "^0.1.3",
+    "meta-dev": "^0.3.1",
     "pre-commit": "^1.1.3"
   },
   "ava": {
     "require": [
       "babel-register"
-    ],
-    "babel": "inherit"
-  },
-  "babel": {
-    "plugins": [
-      "babel-plugin-transform-es2015-modules-commonjs"
     ]
   }
 }

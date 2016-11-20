@@ -1,6 +1,6 @@
 import test from 'ava'
 import clone from 'clone'
-import crawl from '../index'
+import crawl from '..'
 import tree from './helpers/tree'
 
 test.beforeEach(t => {
