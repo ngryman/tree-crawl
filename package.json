@@ -28,7 +28,8 @@
     "predocs": "npm run build -s",
     "docs": "meta docs",
     "prebuild": "npm run lint -s",
-    "build": "meta build"
+    "build": "meta build",
+    "prepublish": "npm run build -s"
   },
   "precommit": [
     "test",
