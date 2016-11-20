@@ -1,6 +1,6 @@
 {
   "name": "tree-crawl",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "n-ary tree traversal library.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
