@@ -25,6 +25,7 @@
     "coverage": "meta coverage",
     "see-coverage": "meta see-coverage",
     "check-coverage": "meta check-coverage",
+    "predocs": "npm run build -s",
     "docs": "meta docs",
     "prebuild": "npm run lint -s",
     "build": "meta build"
