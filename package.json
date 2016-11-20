@@ -73,7 +73,7 @@
   "dependencies": {},
   "devDependencies": {
     "clone": "^1.0.2",
-    "meta-dev": "^0.3.1",
+    "meta-dev": "^0.3.2",
     "pre-commit": "^1.1.3"
   }
 }
