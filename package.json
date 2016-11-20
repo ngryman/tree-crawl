@@ -70,6 +70,9 @@
       }
     }
   },
+  "eslintConfig": {
+    "extends": "ngryman"
+  },
   "dependencies": {},
   "devDependencies": {
     "clone": "^1.0.2",
