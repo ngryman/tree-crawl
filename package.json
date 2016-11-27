@@ -1,6 +1,6 @@
 {
   "name": "tree-crawl",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "n-ary tree traversal library.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
@@ -56,13 +56,19 @@
     "postorder"
   ],
   "ava": {
-    "require": ["babel-register"]
+    "require": [
+      "babel-register"
+    ]
   },
   "babel": {
     "env": {
       "test": {
-        "presets": ["node5"],
-        "plugins": ["istanbul"]
+        "presets": [
+          "node5"
+        ],
+        "plugins": [
+          "istanbul"
+        ]
       }
     }
   },
@@ -70,7 +76,9 @@
     "extends": "ngryman"
   },
   "nyc": {
-    "require": ["babel-register"],
+    "require": [
+      "babel-register"
+    ],
     "sourceMap": false,
     "instrument": false
   },
