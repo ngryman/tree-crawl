@@ -56,27 +56,28 @@
     "postorder"
   ],
   "ava": {
-    "require": [
-      "babel-register"
-    ]
+    "require": ["babel-register"]
   },
   "babel": {
     "env": {
-      "development": {
-        "plugins": [
-          "transform-es2015-modules-commonjs"
-        ],
-        "sourceMaps": "inline"
+      "test": {
+        "presets": ["node5"],
+        "plugins": ["istanbul"]
       }
     }
   },
   "eslintConfig": {
     "extends": "ngryman"
   },
+  "nyc": {
+    "require": ["babel-register"],
+    "sourceMap": false,
+    "instrument": false
+  },
   "dependencies": {},
   "devDependencies": {
     "clone": "^2.0.0",
-    "meta-dev": "^0.3.5",
+    "meta-dev": "^0.4.0",
     "pre-commit": "^1.1.3"
   }
 }
