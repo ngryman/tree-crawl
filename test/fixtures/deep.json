@@ -4,14 +4,14 @@
     {
       "value": 2,
       "children": [
-        { "value": 3 },
-        { "value": 4 }
+        { "value": 3, "children": [] },
+        { "value": 4, "children": [] }
       ]
     },
     {
       "value": 5,
       "children": [
-        { "value": 6 }
+        { "value": 6, "children": [] }
       ]
     }
   ]

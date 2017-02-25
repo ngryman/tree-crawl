@@ -10,9 +10,19 @@
 [codecov-url]: https://codecov.io/github/ngryman/tree-crawl
 
 
-**tree-crawl** is a lightweight tree crawler, well, technically walker.
+**tree-crawl** is a super fast, lightweight tree traversal library.
 
-It lets your walk `n-ary` trees in **pre-order** or **post-order** and does not 💥 when you mutate the tree while traversing it.
+* **Faaaaast**: It takes advantage of multiple optimizations.
+* **Multiple orders**: It supports the 3 big ways of traversing a tree:
+  * Depth first pre-order
+  * Depth first post-order
+  * Breadth first
+* **Flexible**: You can basically manipulate any sort of tree, it's totally agnostic.
+* **Mutation friendly**: It does not 💥 when you mutate the tree and allows to:
+  * Break the walk
+  * Remove a node
+  * Skip a node
+  * Replace a node
 
 ## Install
 
