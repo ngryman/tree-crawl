@@ -1,8 +1,9 @@
-const THRESHOLD = 65536
+const THRESHOLD = 32768
 
 function Queue(initial) {
   this.xs = [initial]
   this.top = 0
+  this.maxLength = 0
 }
 
 Queue.prototype = {
@@ -19,10 +20,8 @@ Queue.prototype = {
   dequeue() {
     const x = this.peek()
     this.top++
-    // if (0 === this.length) {
-    //   this.top = 0
-    // }
-    if (this.top * 2 >= this.xs.length || this.top >= THRESHOLD) {
+    /* istanbul ignore next */
+    if (this.top === THRESHOLD) {
       this.xs = this.xs.slice(this.top)
       this.top = 0
     }
