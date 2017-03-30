@@ -23,7 +23,6 @@
     "test": "cross-env NODE_ENV=test nyc ava",
     "debug": "cross-env NODE_ENV=debug inspect -r babel-register -r ./test/helpers/fixtures.js --debug-exception node_modules/ava/profile.js",
     "start": "meta dev",
-    "docs": "documentation build index.js -f md -o docs/api.md",
     "coverage": "nyc report --reporter=text-lcov | codecov",
     "see-coverage": "nyc report --reporter=html && open coverage/index.html",
     "check-coverage": "nyc check-coverage --lines 100 --functions 100 --branches 100",
@@ -61,40 +60,15 @@
       "./test/helpers/fixtures.js"
     ]
   },
-  "babel": {
-    "env": {
-      "test": {
-        "presets": [
-          "node5"
-        ],
-        "plugins": [
-          "istanbul"
-        ]
-      },
-      "debug": {
-        "presets": [
-          "node5"
-        ]
-      }
-    }
-  },
-  "nyc": {
-    "require": [
-      "babel-register"
-    ],
-    "sourceMap": false,
-    "instrument": false
-  },
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.18.2",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.2.2",
+    "babel-preset-env": "^1.3.1",
     "benchmark": "^2.1.3",
     "clone": "^2.0.0",
     "codecov": "^2.1.0",
     "cross-env": "^3.2.4",
-    "documentation": "^4.0.0-beta.18",
     "eslint": "^3.18.0",
     "husky": "^0.13.3",
     "meta-dev": "^0.4.2",

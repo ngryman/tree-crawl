@@ -12,6 +12,9 @@
 
 **tree-crawl** is a super fast, lightweight tree traversal library.
 
+## Why?
+
+* *Agnostic*: Supports any kind of tree.
 * **Faaaaast**: It takes advantage of multiple optimizations.
 * **Multiple orders**: It supports the 3 big ways of traversing a tree:
   * Depth first pre-order
@@ -24,51 +27,78 @@
   * Skip a node
   * Replace a node
 
-## Install
-
-```bash
-npm install --save tree-crawl
-```
-
 ## Usage
 
-```javascript
-import crawl from 'tree-crawl'
+### Installation
 
-// traverse the tree in pre-order
-crawl(tree, console.log)
-crawl(tree, console.log, { order: 'pre' })
+You can install `tree-crawl` with `yarn`:
+```sh
+$ yarn add tree-crawl
+```
 
-// traverse the tree in post-order
-crawl(tree, console.log, { order: 'post' })
+Alternatively using `npm`:
+```sh
+$ npm install --save tree-crawl
+```
 
-// traverse the tree using `childNodes` as the children key
-crawl(tree, console.log, { childrenKey: 'childNodes' }
+`tree-crawl` supports any kind of tree, the only thing it need is a way to access the children of a node. You can use default `getChildren` provided that basically return the `children` property of a node or define a custom one.
 
-// skip a node and its children
-crawl(tree, (node, context) => {
+## Custom node children
+
+The default `getChildren` is defined like so:
+```js
+const getChildren = (node) => node.children
+```
+
+If you want to provide your own and traverse a `dom` tree for example, you can do it like this:
+```js
+const getChildren = (node) => node.childNodes
+
+crawl(document.body, doSomeStuff, { getChildren })
+```
+
+## Traversal context
+
+### Skip
+
+```js
+crawl(root, (node, context) => {
   if ('foo' === node.type) {
     context.skip()
   }
 })
+```
 
-// break the walk
-crawl(tree, (node, context) => {
+### Break
+
+```js
+crawl(root, (node, context) => {
   if ('foo' === node.type) {
     context.break()
   }
 })
+```
 
-// remove a node
-crawl(tree, (node, context) => {
+### Remove
+
+```js
+
+Because `tree-crawl` has no idea about the intrinsic structure of your tree, you have to remove the node yourself. `Context#remove` notifies the traversal code that the structure of the tree has changed.
+
+crawl(root, (node, context) => {
   if ('foo' === node.type) {
     context.parent.children.splice(context.index, 1)
     context.remove()
   }
 })
+```
 
-// replace a node
-crawl(tree, (node, context) => {
+### Replace
+
+Because `tree-crawl` has no idea about the intrinsic structure of your tree, you have to replace the node yourself. `Context#replace` notifies the traversal code that the structure of the tree has changed.
+
+```js
+crawl(root, (node, context) => {
   if ('foo' === node.type) {
     const node = {
       type: 'new node',
@@ -82,12 +112,11 @@ crawl(tree, (node, context) => {
 })
 ```
 
-## API
-
-See the [api](docs/api.md) documentation.
+## Tree format
 
 ## Related
 
+ - [arbre](https://github.com/arbrejs/arbre) n-ary tree library.
  - [tree-mutate](https://github.com/ngryman/tree-mutate) n-ary tree mutation library.
  - [tree-morph](https://github.com/ngryman/tree-morph) n-ary tree morphing library.
 
