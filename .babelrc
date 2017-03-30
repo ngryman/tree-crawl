@@ -1,0 +1,19 @@
+{
+  "presets": [
+    ["env", {
+      "targets": { "node": true }
+    }]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "istanbul"
+      ]
+    },
+    "debug": {
+      "presets": [
+        "node5"
+      ]
+    }
+  }
+}
