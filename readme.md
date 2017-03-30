@@ -16,6 +16,7 @@
 
 * *Agnostic*: Supports any kind of tree.
 * **Faaaaast**: It takes advantage of multiple optimizations.
+* **Dependency free*: emptiness.
 * **Multiple orders**: It supports the 3 big ways of traversing a tree:
   * Depth first pre-order
   * Depth first post-order
