@@ -22,7 +22,7 @@
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test nyc ava",
     "debug": "cross-env NODE_ENV=debug inspect -r babel-register -r ./test/helpers/fixtures.js --debug-exception node_modules/ava/profile.js",
-    "docs": "documentation readme index.js -s API",
+    "docs": "documentation readme index.js lib/internal/context.js -s API",
     "start": "meta dev",
     "coverage": "nyc report --reporter=text-lcov | codecov",
     "see-coverage": "nyc report --reporter=html && open coverage/index.html",
