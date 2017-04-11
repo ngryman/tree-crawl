@@ -2,29 +2,37 @@ import dfsPre from './lib/dfs-pre'
 import dfsPost from './lib/dfs-post'
 import bfs from './lib/bfs'
 
-const defaultGetChildren = (node) => node.children
-
 /**
  * Walk options.
  *
  * @typedef {Object} Options
- * @property {string} [childrenKey=children] Name of the node property holding
- * an array of children.
- * @property {'pre'|'post'|'bfs'} [order=pre] Order of the walk either in dfs pre-order,
- * dfs post-order or bfs.
+ * @property {Function} [getChildren] Return a node's children.
+ * @property {'pre'|'post'|'bfs'} [order=pre] Order of the walk either in DFS pre or post order, or
+ * BFS.
+ *
+ * @example <caption>Traverse a DOM tree.</caption>
+ * crawl(document.body, doSomeStuff, { getChildren: node => node.childNodes })
+ *
+ * @example <caption>BFS traversal</caption>
+ * crawl(root, doSomeStuff, { order: 'bfs' })
  */
 
 /**
- * Walk a tree recursively using either **pre-order** or **post-order**
- * specified in `options`.
+ * Called on each node of the tree.
+ * @callback Iteratee
+ * @param {Object} node Node being visited.
+ * @param {Context} context Traversal context (see [Traversal context])
+ */
+
+const defaultGetChildren = (node) => node.children
+
+/**
+ * Walk a tree recursively.
  *
- * The only requirement for the tree structure is that
- * it must have a special property holding an array of its children.
- * By default `children` is used, but it can be customized via the
- * `childrenKey` option.
+ * By default `getChildren` will return the `children` property of a node.
  *
  * @param {Object} root Root node of the tree to be walked.
- * @param {Function} iteratee Function invoked on each node.
+ * @param {Iteratee} iteratee Function invoked on each node.
  * @param {Options} [options] Options customizing the walk.
  */
 export default function crawl(root, iteratee, options) {
