@@ -1,8 +1,6 @@
-# tree-crawl
+# tree-crawl [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
 
 > Agnostic tree traversal library.
-
-[![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
 
 [travis-image]: https://img.shields.io/travis/ngryman/tree-crawl.svg?style=flat
 
