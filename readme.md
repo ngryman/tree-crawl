@@ -119,7 +119,7 @@ crawl(root, doSomeStuff, { order: 'bfs' })
 
 ### Iteratee
 
--   **See: [Traversal context](https://github.com/ngryman/tree-crawl/tree#traversal-context).**
+-   **See: [Traversal context](https://github.com/ngryman/tree-crawl/tree/master#traversal-context).**
 
 Called on each node of the tree.
 
