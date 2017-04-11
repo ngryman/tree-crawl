@@ -101,7 +101,7 @@ Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
 -   `getChildren` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)?** Return a node's children.
 -   `order` **(`"pre"` \| `"post"` \| `"bfs"`)?** Order of the walk either in DFS pre or post order, or
-    bfs.
+    BFS.
 
 **Examples**
 
@@ -119,6 +119,8 @@ crawl(root, doSomeStuff, { order: 'bfs' })
 
 ### Iteratee
 
+-   **See: [Traversal context](https://github.com/ngryman/tree-crawl/tree#traversal-context).**
+
 Called on each node of the tree.
 
 Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
@@ -126,7 +128,7 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 **Parameters**
 
 -   `node` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Node being visited.
--   `context` **Context** Traversal context (see [Traversal context])
+-   `context` **Context** Traversal context
 
 ### crawl
 
