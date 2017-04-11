@@ -17,7 +17,7 @@
 -   **Mutations friendly**: Does not 💥 when you mutate the tree.
 -   **Multiple orders**: Supports DFS pre and post order and BFS traversals.
 
-## Usage
+## Quickstart
 
 ### Installation
 
@@ -31,6 +31,58 @@ Alternatively using `npm`:
 
 ```sh
 $ npm install --save tree-crawl
+```
+
+### Usage
+
+```js
+import crawl from 'tree-crawl'
+
+// traverse the tree in pre-order
+crawl(tree, console.log)
+crawl(tree, console.log, { order: 'pre' })
+
+// traverse the tree in post-order
+crawl(tree, console.log, { order: 'post' })
+
+// traverse the tree using `childNodes` as the children key
+crawl(tree, console.log, { getChildren: node => node.childNodes })
+
+// skip a node and its children
+crawl(tree, (node, context) => {
+  if ('foo' === node.type) {
+    context.skip()
+  }
+})
+
+// stop the walk
+crawl(tree, (node, context) => {
+  if ('foo' === node.type) {
+    context.break()
+  }
+})
+
+// remove a node
+crawl(tree, (node, context) => {
+  if ('foo' === node.type) {
+    context.parent.children.splice(context.index, 1)
+    context.remove()
+  }
+})
+
+// replace a node
+crawl(tree, (node, context) => {
+  if ('foo' === node.type) {
+    const node = {
+      type: 'new node',
+      children: [
+        { type: 'new leaf' }
+      ]
+    }
+    context.parent.children[context.index] = node
+    context.replace(node)
+  }
+})
 ```
 
 ## API
