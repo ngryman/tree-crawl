@@ -11,8 +11,8 @@
 [codecov-url]: https://codecov.io/github/ngryman/tree-crawl
 
 -   **Agnostic**: Supports any kind of tree. You provide a way to access a node's children, that's it.
--   **Fast**: Crafted to be optimizer-friendly. See [optimization] for more details.
--   **Mutations friendly**: Does not 💥 when you mutate the tree.
+-   **Fast**: Crafted to be optimizer-friendly. See [optimization](#optimization) for more details.
+-   **Mutation friendly**: Does not 💥 when you mutate the tree.
 -   **Multiple orders**: Supports DFS pre and post order and BFS traversals.
 
 ## Quickstart
@@ -206,11 +206,24 @@ crawl(root, (node, context) => {
 })
 ```
 
+## Optimization
+
+`tree-crawl` is meant to be super fast and traverse potentially huge trees. There is no magic, it does it by implementing its own stack and queue for traversal and ensure the code is optimizable by the VM.
+
+If you do need real good performance please first consider reading this [checklist] first.
+
+Your main objective is to keep the traversal code optimized and avoid de-optimizations and bailouts. To do so, your nodes should have the same [hidden class] and your code stay [monomorphic].
+
+[checklist]: http://mrale.ph/blog/2011/12/18/v8-optimization-checklist.html
+[hidden class]: http://mrale.ph/blog/2012/06/03/explaining-js-vms-in-js-inline-caches.html
+[monomorphic]: http://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html
+
+
 ## Related
 
--   [arbre](https://github.com/arbrejs/arbre) n-ary tree library.
--   [tree-mutate](https://github.com/ngryman/tree-mutate) n-ary tree mutation library.
--   [tree-morph](https://github.com/ngryman/tree-morph) n-ary tree morphing library.
+-   [arbre](https://github.com/arbrejs/arbre) Agnostic tree library.
+-   [tree-mutate](https://github.com/ngryman/tree-mutate) Agnostic tree mutation library.
+-   [tree-morph](https://github.com/ngryman/tree-morph) Agnostic tree morphing library.
 
 ## License
 
