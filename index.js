@@ -21,7 +21,8 @@ import bfs from './lib/bfs'
  * Called on each node of the tree.
  * @callback Iteratee
  * @param {Object} node Node being visited.
- * @param {Context} context Traversal context (see [Traversal context])
+ * @param {Context} context Traversal context
+ * @see [Traversal context](https://github.com/ngryman/tree-crawl/tree#traversal-context).
  */
 
 const defaultGetChildren = (node) => node.children
