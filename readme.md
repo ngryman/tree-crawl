@@ -11,7 +11,7 @@
 [codecov-url]: https://codecov.io/github/ngryman/tree-crawl
 
 -   **Agnostic**: Supports any kind of tree. You provide a way to access a node's children, that's it.
--   **Fast**: Crafted to be optimizer-friendly. See [optimization](#optimization) for more details.
+-   **Fast**: Crafted to be optimizer-friendly. See [performance](#performance) for more details.
 -   **Mutation friendly**: Does not 💥 when you mutate the tree.
 -   **Multiple orders**: Supports DFS pre and post order and BFS traversals.
 
@@ -146,6 +146,9 @@ By default `getChildren` will return the `children` property of a node.
 
 A traversal context.
 
+Four operations are available. Note that depending on the traversal order, some operations have
+no effects.
+
 **Parameters**
 
 -   `flags` **Flags** 
@@ -155,22 +158,78 @@ A traversal context.
 
 Skip current node, children won't be visited.
 
+**Examples**
+
+```javascript
+crawl(root, (node, context) => {
+  if ('foo' === node.type) {
+    context.skip()
+  }
+})
+```
+
 #### break
 
 Stop traversal now.
 
+**Examples**
+
+```javascript
+crawl(root, (node, context) => {
+  if ('foo' === node.type) {
+    context.break()
+  }
+})
+```
+
 #### remove
 
 Notifies that the current node has been removed, children won't be visited.
+
+Because `tree-crawl` has no idea about the intrinsic structure of your tree, you have to
+remove the node yourself. `Context#remove` only notifies the traversal code that the structure
+of the tree has changed.
+
+**Examples**
+
+```javascript
+crawl(root, (node, context) => {
+  if ('foo' === node.type) {
+    context.parent.children.splice(context.index, 1)
+    context.remove()
+  }
+})
+```
 
 #### replace
 
 Notifies that the current node has been replaced, the new node's children will be visited
 instead.
 
+Because `tree-crawl` has no idea about the intrinsic structure of your tree, you have to
+replace the node yourself. `Context#replace` notifies the traversal code that the structure of
+the tree has changed.
+
 **Parameters**
 
 -   `node` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Replacement node.
+
+**Examples**
+
+```javascript
+crawl(root, (node, context) => {
+  if ('foo' === node.type) {
+    const node = {
+      type: 'new node',
+      children: [
+        { type: 'new leaf' }
+      ]
+    }
+    context.parent.children[context.index] = node
+    context.replace(node)
+  }
+})
+```
 
 #### parent
 
@@ -197,73 +256,9 @@ Get the index of the current node.
 
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Node's index.
 
-## Traversal context
+## Performance
 
-In order to alter the traversal, a context object is passed as 2nd parameter. Four operations are available. Note that depending on the traversal order, some operations have no effects.
-
-### Skip
-
-Skip current node, children won't be visited.
-
-```js
-crawl(root, (node, context) => {
-  if ('foo' === node.type) {
-    context.skip()
-  }
-})
-```
-
-### Break
-
-Stop traversal now.
-
-```js
-crawl(root, (node, context) => {
-  if ('foo' === node.type) {
-    context.break()
-  }
-})
-```
-
-### Remove
-
-Notifies that the current node has been removed, children won't be visited.
-
-Because `tree-crawl` has no idea about the intrinsic structure of your tree, you have to remove the node yourself. `Context#remove` only notifies the traversal code that the structure of the tree has changed.
-
-```js
-crawl(root, (node, context) => {
-  if ('foo' === node.type) {
-    context.parent.children.splice(context.index, 1)
-    context.remove()
-  }
-})
-```
-
-### Replace
-
-Notifies that the current node has been replaced, the new node's children will be visited instead.
-
-Because `tree-crawl` has no idea about the intrinsic structure of your tree, you have to replace the node yourself. `Context#replace` notifies the traversal code that the structure of the tree has changed.
-
-```js
-crawl(root, (node, context) => {
-  if ('foo' === node.type) {
-    const node = {
-      type: 'new node',
-      children: [
-        { type: 'new leaf' }
-      ]
-    }
-    context.parent.children[context.index] = node
-    context.replace(node)
-  }
-})
-```
-
-## Optimization
-
-`tree-crawl` is meant to be super fast and traverse potentially huge trees. It's possible because it implements its own stack and queue for traversal and makes sure the code is optimizable by the VM.
+`tree-crawl` is built to be super fast and traverse potentially huge trees. It's possible because it implements its own stack and queue for traversal algorithms and makes sure the code is optimizable by the VM.
 
 If you do need real good performance please consider reading this [checklist] first.
 
