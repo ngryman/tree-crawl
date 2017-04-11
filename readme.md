@@ -208,9 +208,9 @@ crawl(root, (node, context) => {
 
 ## Optimization
 
-`tree-crawl` is meant to be super fast and traverse potentially huge trees. There is no magic, it does it by implementing its own stack and queue for traversal and ensure the code is optimizable by the VM.
+`tree-crawl` is meant to be super fast and traverse potentially huge trees. It's possible because it implements its own stack and queue for traversal and makes sure the code is optimizable by the VM.
 
-If you do need real good performance please first consider reading this [checklist] first.
+If you do need real good performance please consider reading this [checklist] first.
 
 Your main objective is to keep the traversal code optimized and avoid de-optimizations and bailouts. To do so, your nodes should have the same [hidden class] and your code stay [monomorphic].
 
