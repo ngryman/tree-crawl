@@ -1,0 +1,22 @@
+{
+  "vars": [],
+  "props": [
+    "exports",
+    "amd",
+    "prototype",
+    "assign",
+    "push",
+    "slice",
+    "length",
+    "break",
+    "skip",
+    "remove",
+    "replace",
+    "parent",
+    "depth",
+    "level",
+    "index",
+    "order",
+    "getChildren"
+  ]
+}

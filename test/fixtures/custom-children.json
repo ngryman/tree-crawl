@@ -1,0 +1,7 @@
+{
+  "value": 1,
+  "childNodes": [
+    { "value": 2, "childNodes": [] },
+    { "value": 3, "childNodes": [] }
+  ]
+}

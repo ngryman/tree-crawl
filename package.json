@@ -1,7 +1,7 @@
 {
   "name": "tree-crawl",
   "version": "0.6.1",
-  "description": "n-ary tree traversal library.",
+  "description": "Agnostic tree traversal library.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
   "repository": "ngryman/tree-crawl",
@@ -18,24 +18,23 @@
     "dist/"
   ],
   "scripts": {
-    "lint": "meta lint",
-    "pretest": "npm run lint -s",
-    "test": "meta test",
-    "dev": "meta dev",
-    "coverage": "meta coverage",
-    "see-coverage": "meta see-coverage",
-    "check-coverage": "meta check-coverage",
-    "predocs": "npm run build -s",
-    "docs": "meta docs",
-    "prebuild": "npm run lint -s",
-    "build": "meta build",
-    "prepublish": "npm run build -s"
+    "lint": "eslint *.js {lib,test}/**/*.js",
+    "pretest": "npm run lint",
+    "test": "cross-env NODE_ENV=test nyc ava",
+    "debug": "cross-env NODE_ENV=debug inspect -r babel-register -r ./test/helpers/fixtures.js --debug-exception node_modules/ava/profile.js",
+    "docs": "documentation readme index.js lib/internal/context.js -c documentation.yml -s API",
+    "start": "meta dev",
+    "coverage": "nyc report --reporter=text-lcov | codecov",
+    "see-coverage": "nyc report --reporter=html && open coverage/index.html",
+    "check-coverage": "nyc check-coverage --lines 100 --functions 100 --branches 100",
+    "bundle": "cross-env NODE_ENV=build rollup -c",
+    "minify": "uglifyjs dist/tree-crawl.js -c -m --reserved-file .reserved --mangle-props -o dist/tree-crawl.min.js",
+    "build": "npm run bundle && npm run minify",
+    "prepublish": "npm run build",
+    "bench": "npm run bundle && node ./perf/bench.js",
+    "profile": "npm run bundle && devtool ./perf/profile.js",
+    "trace": "npm run bundle && node-irhydra ./perf/trace.js"
   },
-  "precommit": [
-    "test",
-    "check-coverage",
-    "docs"
-  ],
   "keywords": [
     "tree",
     "n-ary tree",
@@ -57,35 +56,28 @@
   ],
   "ava": {
     "require": [
-      "babel-register"
+      "babel-register",
+      "./test/helpers/fixtures.js"
     ]
   },
-  "babel": {
-    "env": {
-      "test": {
-        "presets": [
-          "node5"
-        ],
-        "plugins": [
-          "istanbul"
-        ]
-      }
-    }
-  },
-  "eslintConfig": {
-    "extends": "ngryman"
-  },
-  "nyc": {
-    "require": [
-      "babel-register"
-    ],
-    "sourceMap": false,
-    "instrument": false
-  },
-  "dependencies": {},
   "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-preset-env": "^1.3.1",
+    "benchmark": "^2.1.3",
     "clone": "^2.0.0",
-    "meta-dev": "^0.4.2",
-    "pre-commit": "^1.1.3"
+    "codecov": "^2.1.0",
+    "cross-env": "^3.2.4",
+    "documentation": "^4.0.0-beta.19",
+    "eslint": "^3.18.0",
+    "eslint-config-ngryman": "^1.7.1",
+    "nyc": "^10.2.0",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-cleanup": "^1.0.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "uglify-js": "^2.8.18"
   }
 }

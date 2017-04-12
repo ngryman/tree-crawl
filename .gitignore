@@ -1,6 +1,8 @@
 # project
 .nyc_output
 .todo
+code.asm
+hydrogen.cfg
 coverage/
 dist/
 
