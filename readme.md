@@ -1,7 +1,5 @@
 # tree-crawl [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![size][size-image]][size-url]
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ngryman/tree-crawl.svg)](https://greenkeeper.io/)
-
 > Agnostic tree traversal library.
 
 [travis-image]: https://img.shields.io/travis/ngryman/tree-crawl.svg?style=flat
