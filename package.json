@@ -5,8 +5,8 @@
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
   "repository": "ngryman/tree-crawl",
-  "main": "dist/tree-crawl.node.js",
-  "browser": "dist/tree-crawl.browser.js",
+  "main": "dist/tree-crawl.js",
+  "browser": "dist/tree-crawl.js",
   "module": "index.js",
   "jsnext:main": "index.js",
   "engines": {
