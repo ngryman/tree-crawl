@@ -4,10 +4,12 @@ import babel from 'rollup-plugin-babel'
 import cleanup from 'rollup-plugin-cleanup'
 
 export default {
-  format: 'umd',
-  entry: 'index.js',
-  dest: 'dist/tree-crawl.js',
-  moduleName: 'crawl',
+  name: 'crawl',
+  input: 'index.js',
+  output: {
+    format: 'umd',
+    file: 'dist/tree-crawl.js'
+  },
   plugins: [
     resolve({
       jsnext: true,
