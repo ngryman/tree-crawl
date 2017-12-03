@@ -39,6 +39,8 @@ const defaultGetChildren = (node) => node.children
 export default function crawl(root, iteratee, options) {
   if (null == root) return
 
+  options = options || {}
+
   // default options
   const order = options.order || 'pre'
   const getChildren = options.getChildren || defaultGetChildren
