@@ -1,6 +1,4 @@
-# tree-crawl [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![size][size-image]][size-url]
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/ngryman/tree-crawl.svg)](https://greenkeeper.io/)
+# tree-crawl [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![greenkeeper][greenkeeper-image]][greenkeeper-url] [![size][size-image]][size-url]
 
 > Agnostic tree traversal library.
 
@@ -8,6 +6,8 @@
 [travis-url]: https://travis-ci.org/ngryman/tree-crawl
 [codecov-image]: https://img.shields.io/codecov/c/github/ngryman/tree-crawl.svg
 [codecov-url]: https://codecov.io/github/ngryman/tree-crawl
+[greenkeeper-image]: https://badges.greenkeeper.io/ngryman/tree-crawl.svg
+[greenkeeper-url]: https://greenkeeper.io/
 [size-image]: http://img.badgesize.io/https://unpkg.com/tree-crawl@1.0.0/dist/tree-crawl.min.js?compression=gzip
 [size-url]: https://unpkg.com/tree-crawl@1.0.0/dist/tree-crawl.min.js
 
