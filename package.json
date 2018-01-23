@@ -73,7 +73,7 @@
     "eslint": "^4.9.0",
     "eslint-config-ngryman": "^1.7.1",
     "nyc": "^11.2.1",
-    "rollup": "^0.54.1",
+    "rollup": "^0.55.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-cleanup": "^1.0.0",
     "rollup-plugin-commonjs": "^8.0.2",
