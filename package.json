@@ -9,11 +9,13 @@
   "browser": "dist/tree-crawl.js",
   "module": "index.js",
   "jsnext:main": "index.js",
+  "types": "index.d.ts",
   "engines": {
     "node": ">=5"
   },
   "files": [
     "index.js",
+    "index.d.ts",
     "lib/",
     "dist/"
   ],
