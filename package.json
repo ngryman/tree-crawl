@@ -71,7 +71,7 @@
     "clone": "^2.0.0",
     "codecov": "^2.1.0",
     "cross-env": "^5.0.0",
-    "documentation": "^5.3.3",
+    "documentation": "^6.0.0",
     "eslint": "^4.9.0",
     "eslint-config-ngryman": "^1.7.1",
     "nyc": "^11.2.1",
