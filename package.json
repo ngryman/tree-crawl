@@ -79,7 +79,7 @@
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-cleanup": "^1.0.0",
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "uglify-js": "^3.0.0"
   }
 }
