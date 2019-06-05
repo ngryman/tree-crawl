@@ -36,7 +36,7 @@ const defaultGetChildren = (node) => node.children
  * @param {Iteratee} iteratee Function invoked on each node.
  * @param {Options} [options] Options customizing the walk.
  */
-export default function crawl(root, iteratee, options) {
+export default async function crawl(root, iteratee, options) {
   if (null == root) return
 
   options = options || {}
@@ -47,12 +47,12 @@ export default function crawl(root, iteratee, options) {
 
   // walk the tree!
   if ('pre' === order) {
-    dfsPre(root, iteratee, getChildren)
+    await dfsPre(root, iteratee, getChildren)
   }
   else if ('post' === order) {
-    dfsPost(root, iteratee, getChildren)
+    await dfsPost(root, iteratee, getChildren)
   }
   else if ('bfs' === order) {
-    bfs(root, iteratee, getChildren)
+    await bfs(root, iteratee, getChildren)
   }
 }
