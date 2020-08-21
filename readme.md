@@ -91,14 +91,14 @@ crawl(tree, (node, context) => {
 **tl;dr It's easy for DFS, less easy for BFS**
 
 If you are using DFS you can use the following utility function:
-```
-const = getPath(context) =>
+```javascript
+const getPath = context =>
   context.cursor.stack.xs.reduce((path, item) => {
     if (item.node) {
       path.push(item.node)
     }
     return path
-  })
+  }, [])
 ```
 If you are really concerned about performance, you could read items from the stack directly. Each item has a `node` and `index` property that you can use. The first item in the stack can be discarded and will have a `node` set to `null`. Be aware that you should not mutate the stack, or it will break the traversal.
 
