@@ -7,7 +7,7 @@
   "repository": "ngryman/tree-crawl",
   "main": "dist/tree-crawl.js",
   "browser": "dist/tree-crawl.js",
-  "module": "index.js",
+  "module": "dist/tree-crawl.ems.js",
   "jsnext:main": "index.js",
   "types": "index.d.ts",
   "engines": {
