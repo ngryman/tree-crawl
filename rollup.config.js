@@ -6,10 +6,13 @@ import cleanup from 'rollup-plugin-cleanup'
 export default {
   name: 'crawl',
   input: 'index.js',
-  output: {
+  output: [{
     format: 'umd',
     file: 'dist/tree-crawl.js'
-  },
+  }, {
+    format: 'es',
+    file: 'dist/tree-crawl.esm.js'
+  }],
   plugins: [
     resolve({
       jsnext: true,
