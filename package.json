@@ -1,6 +1,6 @@
 {
   "name": "tree-crawl",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Agnostic tree traversal library.",
   "author": "Nicolas Gryman <ngryman@gmail.com> (http://ngryman.sh/)",
   "license": "MIT",
