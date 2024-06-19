@@ -78,7 +78,7 @@ declare namespace crawl {
 declare function crawl<TreeNode>(
   root: TreeNode,
   iteratee: (node: TreeNode, context: crawl.Context<TreeNode>) => void,
-  options: crawl.Options<TreeNode>
+  options?: crawl.Options<TreeNode>
 ): void
 
 export = crawl
